@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#2b6cb0" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>YouTube Alarm Clock</title>
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div>
+          <h1 class="title">YouTube Alarm Clock</h1>
+          <p class="subtitle" id="date">--</p>
+        </div>
+        <div class="clock" id="clock">--:--:--</div>
+      </header>
+
+      <div class="install-banner" id="install-banner" hidden>
+        <strong>Install on iPhone:</strong> tap Share in Safari, then
+        <strong>Add to Home Screen</strong>. Keep notifications enabled for alarms
+        while the phone is locked.
+      </div>
+
+      <div class="grid">
+        <section class="panel">
+          <h2>New alarm</h2>
+
+          <div class="field">
+            <label for="hour">Time (24h)</label>
+            <div class="time-row">
+              <input id="hour" type="number" min="0" max="23" inputmode="numeric" />
+              <span>:</span>
+              <input id="minute" type="number" min="0" max="59" inputmode="numeric" />
+              <span>:</span>
+              <input id="second" type="number" min="0" max="59" inputmode="numeric" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="label">Label</label>
+            <input id="label" type="text" placeholder="Morning alarm" />
+          </div>
+
+          <div class="field">
+            <label for="youtube-url">YouTube URL</label>
+            <input id="youtube-url" type="url" placeholder="https://www.youtube.com/watch?v=..." />
+          </div>
+
+          <div class="field">
+            <label for="volume">Volume %</label>
+            <input id="volume" type="number" min="0" max="100" value="20" />
+          </div>
+
+          <label class="check-row">
+            <input id="repeat-daily" type="checkbox" checked />
+            Repeat daily
+          </label>
+
+          <div class="actions">
+            <button id="preview-btn" class="secondary" type="button">Preview</button>
+            <button id="add-btn" type="button">Add alarm</button>
+          </div>
+
+          <p class="status" id="status">
+            Add a YouTube link and set your alarm. Audio ramps over 10 seconds.
+          </p>
+        </section>
+
+        <section class="panel">
+          <h2>Your alarms</h2>
+          <div class="alarm-list" id="alarm-list"></div>
+        </section>
+      </div>
+    </div>
+
+    <div class="ring-overlay" id="ring-overlay">
+      <div class="ring-card">
+        <h2>ALARM</h2>
+        <p id="ring-title">Alarm</p>
+        <div class="ring-time" id="ring-time">00:00:00</div>
+        <p class="alarm-url" id="ring-url"></p>
+        <div class="ring-actions">
+          <button id="snooze-btn" type="button">Snooze 10 min</button>
+          <button id="stop-btn" class="success" type="button">Stop</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="edit-modal">
+      <div class="modal-card">
+        <h2>Edit alarm</h2>
+
+        <div class="field">
+          <label for="edit-hour">Time (24h)</label>
+          <div class="time-row">
+            <input id="edit-hour" type="number" min="0" max="23" />
+            <span>:</span>
+            <input id="edit-minute" type="number" min="0" max="59" />
+            <span>:</span>
+            <input id="edit-second" type="number" min="0" max="59" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="edit-label">Label</label>
+          <input id="edit-label" type="text" />
+        </div>
+
+        <div class="field">
+          <label for="edit-url">YouTube URL</label>
+          <input id="edit-url" type="url" />
+        </div>
+
+        <div class="field">
+          <label for="edit-volume">Volume %</label>
+          <input id="edit-volume" type="number" min="0" max="100" />
+        </div>
+
+        <label class="check-row">
+          <input id="edit-repeat" type="checkbox" />
+          Repeat daily
+        </label>
+
+        <div class="modal-actions">
+          <button id="edit-preview" class="secondary" type="button">Preview</button>
+          <button id="edit-save" type="button">Save</button>
+          <button id="edit-cancel" class="secondary" type="button">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
